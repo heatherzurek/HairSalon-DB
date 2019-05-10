@@ -52,11 +52,15 @@ namespace HairSalon.Models
             MySqlConnection conn = DB.Connection();
             conn.Open();
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO stylists (name) VALUES (@name);";
+            cmd.CommandText = @"INSERT INTO stylists (name, id) VALUES (@name, @id);";
             MySqlParameter name = new MySqlParameter();
             name.ParameterName = "@name";
             name.Value = this._name;
             cmd.Parameters.Add(name);
+            MySqlParameter id = new MySqlParameter();
+            id.ParameterName = "@id";
+            id.Value = this._id;
+            cmd.Parameters.Add(id);
             cmd.ExecuteNonQuery();
             _id = (int) cmd.LastInsertedId;
             conn.Close();

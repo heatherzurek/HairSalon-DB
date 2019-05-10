@@ -84,24 +84,24 @@ namespace HairSalon.Tests
         CollectionAssert.AreEqual(newList, result);
       }
 
-      [TestMethod]
-      public void GetAll_ReturnsClients_ClientList()
-      {
-        //Arrange
-        string clientName01 = "Dwight";
-        string clientName02 = "Angela";
-        Client newClient1 = new Client(clientName01, 1);
-        // newClient1.Save();
-        Client newClient2 = new Client(clientName02, 1);
-        // newClient2.Save();
-        List<Client> newList = new List<Client> { newClient1, newClient2 };
-
-        //Act
-        List<Client> result = Client.GetAll();
-
-        //Assert
-        CollectionAssert.AreEqual(newList, result);
-      }
+      // [TestMethod]
+      // public void GetAll_ReturnsClients_ClientList()
+      // {
+      //   //Arrange
+      //   string clientName01 = "Dwight";
+      //   string clientName02 = "Angela";
+      //   Client newClient1 = new Client(clientName01, 1);
+      //   // newClient1.Save();
+      //   Client newClient2 = new Client(clientName02, 1);
+      //   // newClient2.Save();
+      //   List<Client> newList = new List<Client> { newClient1, newClient2 };
+      //
+      //   //Act
+      //   List<Client> result = Client.GetAll();
+      //
+      //   //Assert
+      //   CollectionAssert.AreEqual(newList, result);
+      // }
 
       // [TestMethod]
       // public void Equals_ReturnsTrueIfDescriptionsAreTheSame_Client()

@@ -53,7 +53,7 @@ namespace HairSalon.Tests
     public void Save_SavesToDatabase_StylistList()
     {
       //Arrange
-      Stylist testStylist = new Stylist("Dwight", 1);
+      Stylist testStylist = new Stylist("Dwight", 5);
 
       //Act
       testStylist.Save();
