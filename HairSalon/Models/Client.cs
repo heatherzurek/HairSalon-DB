@@ -8,16 +8,16 @@ namespace HairSalon.Models
     public class Client
     {
         private string _name;
-        private int _id;
+        // private int _id;
         // private int _stylistId;
 
 
-      public Client (string name, int id = 0)
-      // int stylistId
+      public Client (string name)
+      // int stylistId , int id = 0
       {
           _name = name;
           // _stylistId = stylistId;
-          _id = id;
+          // _id = id;
       }
 
       public string GetName()
@@ -30,10 +30,10 @@ namespace HairSalon.Models
           _name = newName;
       }
 
-      public int GetId()
-      {
-          return _id;
-      }
+      // public int GetId()
+      // {
+      //     return _id;
+      // }
       //
       // public int GetCategoryId()
       // {
@@ -43,7 +43,7 @@ namespace HairSalon.Models
       public static List<Client> GetAll()
       // this is where items from the database will go
       {
-          List<Client> allClients = new List<Client> {};
+          List<Client> allClients = new List<Client> { };
           MySqlConnection conn = DB.Connection();
           //calling that database connection
           conn.Open();
@@ -59,7 +59,7 @@ namespace HairSalon.Models
             string clientName = rdr.GetString(1);
             int clientId = rdr.GetInt32(0);
             //once we collect the data we can use it to instanciate a new client object and add them to our allClients List
-            Client newClient = new Client(clientName, clientId);
+            Client newClient = new Client(clientName);
             allClients.Add(newClient);
           }
           //to close the database
@@ -69,7 +69,50 @@ namespace HairSalon.Models
           {
             conn.Dispose();
           }
+
           return allClients;
+        }
+
+        public static Client Find(int searchId)
+        {
+          // Temporarily returning dummy item to get beyond compiler errors, until we refactor to work with database.
+          Client dummyClient = new Client("dummy client");
+          return dummyClient;
+        }
+
+        public int GetId()
+        {
+          // Temporarily returning dummy id to get beyond compiler errors, until we refactor to work with database.
+          return 0;
+        }
+
+        public override bool Equals(System.Object otherClient)
+        {
+          if (!(otherClient is Client))
+          {
+            return false;
+          }
+          else
+          {
+            Client newClient = (Client) otherClient;
+            bool nameEquality = (this.GetName() == newClient.GetName());
+            return (nameEquality);
+          }
+        }
+
+
+        public static void ClearAll()
+        {
+          MySqlConnection conn = DB.Connection();
+          conn.Open();
+          var cmd = conn.CreateCommand() as MySqlCommand;
+          cmd.CommandText = @"DELETE FROM clients;";
+          cmd.ExecuteNonQuery();
+          conn.Close();
+          if (conn != null)
+          {
+           conn.Dispose();
+          }
         }
 
     }

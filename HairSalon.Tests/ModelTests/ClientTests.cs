@@ -10,15 +10,15 @@ namespace HairSalon.Tests
   public class ClientTest
   {
 
-    // public void Dispose()
-    // {
-    //   Client.ClearAll();
-    // }
+    public void Dispose()
+    {
+      Client.ClearAll();
+    }
 
-    // public ClientTest()
-    // {
-    //   DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=hair_salon_test;";
-    // }
+    public ClientTest()
+    {
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=heather_zurek_test;";
+    }
 
       [TestMethod]
       public void ClientConstructor_CreatesInstanceOfClient_Client()
@@ -29,7 +29,7 @@ namespace HairSalon.Tests
         //assert
         Assert.AreEqual(typeof(Client), newClient.GetType());
       }
-      //
+
       [TestMethod]
       public void GetName_ReturnsName_String()
       {
@@ -43,7 +43,7 @@ namespace HairSalon.Tests
         //Assert
         Assert.AreEqual(name, result);
       }
-      //
+
       [TestMethod]
       public void SetName_SetName_String()
       {
@@ -59,7 +59,7 @@ namespace HairSalon.Tests
         //Assert
         Assert.AreEqual(updatedName, result);
       }
-      //
+
       [TestMethod]
       public void GetAll_ReturnsEmptyListFromDatabase_ClientList()
       {
@@ -72,6 +72,30 @@ namespace HairSalon.Tests
         //Assert
         CollectionAssert.AreEqual(newList, result);
       }
+
+      [TestMethod]
+      public void Equals_ReturnsTrueIfDescriptionsAreTheSame_Client()
+      {
+        // Arrange, Act
+        Client firstClient = new Client("bob");
+        Client secondClient = new Client("bill");
+
+        // Assert
+        Assert.AreEqual(firstClient, secondClient);
+      }
+      // //
+      // [TestMethod]
+      // public void GetAll_ReturnsEmptyListFromDatabase_ClientList()
+      // {
+      //   //Arrange
+      //   List<Client> newList = new List<Client> { };
+      //
+      //   //Act
+      //   List<Client> result = Client.GetAll();
+      //
+      //   //Assert
+      //   CollectionAssert.AreEqual(newList, result);
+      // }
 
   }
 

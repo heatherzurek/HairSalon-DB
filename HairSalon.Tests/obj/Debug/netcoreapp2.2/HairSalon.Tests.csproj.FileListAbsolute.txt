@@ -15,3 +15,5 @@
 /Users/heatherzurek/Desktop/HairSalon.Solution/HairSalon.Tests/obj/Debug/netcoreapp2.2/HairSalon.Tests.csproj.CopyComplete
 /Users/heatherzurek/Desktop/HairSalon.Solution/HairSalon.Tests/obj/Debug/netcoreapp2.2/HairSalon.Tests.dll
 /Users/heatherzurek/Desktop/HairSalon.Solution/HairSalon.Tests/obj/Debug/netcoreapp2.2/HairSalon.Tests.pdb
+/Users/heatherzurek/Desktop/HairSalon.Solution/HairSalon.Tests/bin/Debug/netcoreapp2.2/HairSalon.Views.dll
+/Users/heatherzurek/Desktop/HairSalon.Solution/HairSalon.Tests/bin/Debug/netcoreapp2.2/HairSalon.Views.pdb
