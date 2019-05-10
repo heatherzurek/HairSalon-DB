@@ -34,40 +34,40 @@ namespace HairSalon.Tests
       //Assert
       Assert.AreEqual(name, result);
     }
-    //
+
+    [TestMethod]
+    public void GetId_ReturnsStylistId_Int()
+    {
+      //Arrange
+      string name = "Test Stylist";
+      Stylist newStylist = new Stylist(name);
+
+      //Act
+      int result = newStylist.GetId();
+
+      //Assert
+      Assert.AreEqual(0, result);
+    }
+
     // [TestMethod]
-    // public void GetId_ReturnsStylistId_Int()
+    // public void GetAll_ReturnsAllStylistObjects_StylistList()
     // {
     //   //Arrange
-    //   string name = "Test Category";
-    //   Category newCategory = new Category(name);
+    //   string name01 = "Dwight";
+    //   string name02 = "Angela";
+    //   Stylist newStylist1 = new Stylist(name01);
+    //   Stylist newStylist2 = new Stylist(name02);
+    //   List<Stylist> newList = new List<Stylist> { newStylist1, newStylist2 };
     //
     //   //Act
-    //   int result = newCategory.GetId();
-    //
-    //   //Assert
-    //   Assert.AreEqual(1, result);
-    // }
-    //
-    // [TestMethod]
-    // public void GetAll_ReturnsAllCategoryObjects_CategoryList()
-    // {
-    //   //Arrange
-    //   string name01 = "Work";
-    //   string name02 = "School";
-    //   Category newCategory1 = new Category(name01);
-    //   Category newCategory2 = new Category(name02);
-    //   List<Category> newList = new List<Category> { newCategory1, newCategory2 };
-    //
-    //   //Act
-    //   List<Category> result = Category.GetAll();
+    //   List<Stylist> result = Stylist.GetAll();
     //
     //   //Assert
     //   CollectionAssert.AreEqual(newList, result);
     // }
-    //
+
     // [TestMethod]
-    // public void Find_ReturnsCorrectCategory_Category()
+    // public void Find_ReturnsCorrectStylist_Category()
     // {
     //   //Arrange
     //   string name01 = "Work";

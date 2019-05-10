@@ -24,7 +24,7 @@ namespace HairSalon.Tests
       public void ClientConstructor_CreatesInstanceOfClient_Client()
       {
         //arrange
-        Client newClient = new Client("name");
+        Client newClient = new Client("name", 1);
 
         //assert
         Assert.AreEqual(typeof(Client), newClient.GetType());
@@ -35,7 +35,7 @@ namespace HairSalon.Tests
       {
         //Arrange
         string name = "alex";
-        Client newClient = new Client(name);
+        Client newClient = new Client(name, 1);
 
         //Act
         string result = newClient.GetName();
@@ -44,12 +44,23 @@ namespace HairSalon.Tests
         Assert.AreEqual(name, result);
       }
 
+      // [TestMethod]
+      // public void Equals_ReturnsTrueIfNamesAreTheSame_Client()
+      // {
+      //   // Arrange, Act
+      //   Client firstClient = new Client("Dwight", 1);
+      //   Client secondClient = new Client("Dwight", 1);
+      //
+      //   // Assert
+      //   Assert.AreEqual(firstClient, secondClient);
+      // }
+
       [TestMethod]
       public void SetName_SetName_String()
       {
         //Arrange
         string name = "alex";
-        Client newClient = new Client(name);
+        Client newClient = new Client(name, 1);
 
         //Act
         string updatedName = "bryan";
@@ -73,6 +84,25 @@ namespace HairSalon.Tests
         CollectionAssert.AreEqual(newList, result);
       }
 
+      [TestMethod]
+      public void GetAll_ReturnsClients_ClientList()
+      {
+        //Arrange
+        string clientName01 = "Dwight";
+        string clientName02 = "Angela";
+        Client newClient1 = new Client(clientName01, 1);
+        // newClient1.Save();
+        Client newClient2 = new Client(clientName02, 1);
+        // newClient2.Save();
+        List<Client> newList = new List<Client> { newClient1, newClient2 };
+
+        //Act
+        List<Client> result = Client.GetAll();
+
+        //Assert
+        CollectionAssert.AreEqual(newList, result);
+      }
+
       // [TestMethod]
       // public void Equals_ReturnsTrueIfDescriptionsAreTheSame_Client()
       // {
@@ -84,18 +114,6 @@ namespace HairSalon.Tests
       //   Assert.AreEqual(firstClient, secondClient);
       // }
       // //
-      // [TestMethod]
-      // public void GetAll_ReturnsEmptyListFromDatabase_ClientList()
-      // {
-      //   //Arrange
-      //   List<Client> newList = new List<Client> { };
-      //
-      //   //Act
-      //   List<Client> result = Client.GetAll();
-      //
-      //   //Assert
-      //   CollectionAssert.AreEqual(newList, result);
-      // }
 
   }
 
