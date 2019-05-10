@@ -17,6 +17,26 @@ namespace HairSalon.Models
             _id = id;
         }
 
+        public override bool Equals(System.Object otherStylist)
+        {
+            if (!(otherStylist is Stylist))
+            {
+                return false;
+            }
+            else
+            {
+                Stylist newStylist = (Stylist) otherStylist;
+                bool idEquality = this.GetId().Equals(newStylist.GetId());
+                bool nameEquality = this.GetName().Equals(newStylist.GetName());
+                return (idEquality && nameEquality);
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return this.GetId().GetHashCode();
+        }
+
         public string GetName()
         {
             return _name;
@@ -45,6 +65,34 @@ namespace HairSalon.Models
                 conn.Dispose();
             }
 
+        }
+
+        public List<Client> GetClients()
+        {
+          List<Client> allStylistClients = new List<Client> {};
+          MySqlConnection conn = DB.Connection();
+          conn.Open();
+          var cmd = conn.CreateCommand() as MySqlCommand;
+          cmd.CommandText = @"SELECT * FROM clients WHERE stylist_id = @stylist_id;";
+          MySqlParameter stylistId = new MySqlParameter();
+          stylistId.ParameterName = "@stylist_id";
+          stylistId.Value = this._id;
+          cmd.Parameters.Add(stylistId);
+          var rdr = cmd.ExecuteReader() as MySqlDataReader;
+          while(rdr.Read())
+          {
+              int clientId = rdr.GetInt32(1);
+              string clientName = rdr.GetString(0);
+              int clientStylistId = rdr.GetInt32(2);
+              Client newClient = new Client(clientName, clientStylistId, clientId);
+              allStylistClients.Add(newClient);
+          }
+          conn.Close();
+          if (conn != null)
+          {
+              conn.Dispose();
+          }
+          return allStylistClients;
         }
 
         public static List<Stylist> GetAll()
