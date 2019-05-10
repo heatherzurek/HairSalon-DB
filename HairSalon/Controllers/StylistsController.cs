@@ -26,7 +26,7 @@ namespace HairSalon.Controllers
         public ActionResult Create(string stylistName)
         {
             Stylist newStylist = new Stylist(stylistName);
-            // newStylist.Save();
+            newStylist.Save();
             List<Stylist> allStylists = Stylist.GetAll();
             return View("Index", allStylists);
         }
