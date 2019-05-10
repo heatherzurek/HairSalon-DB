@@ -21,22 +21,22 @@ namespace HairSalon.Tests
       Assert.AreEqual(typeof(Stylist), newStylist.GetType());
     }
     //
+    [TestMethod]
+    public void GetName_ReturnsName_String()
+    {
+      //Arrange
+      string name = "Test Stylist";
+      Stylist newStylist = new Stylist(name);
+
+      //Act
+      string result = newStylist.GetName();
+
+      //Assert
+      Assert.AreEqual(name, result);
+    }
+    //
     // [TestMethod]
-    // public void GetName_ReturnsName_String()
-    // {
-    //   //Arrange
-    //   string name = "Test Stylist";
-    //   Category newCategory = new Category(name);
-    //
-    //   //Act
-    //   string result = newCategory.GetName();
-    //
-    //   //Assert
-    //   Assert.AreEqual(name, result);
-    // }
-    //
-    // [TestMethod]
-    // public void GetId_ReturnsCategoryId_Int()
+    // public void GetId_ReturnsStylistId_Int()
     // {
     //   //Arrange
     //   string name = "Test Category";

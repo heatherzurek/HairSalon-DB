@@ -37,11 +37,11 @@ namespace HairSalon.Models
         //     return this.GetId().GetHashCode();
         // }
         //
-        // public string GetName()
-        // {
-        //     return _name;
-        // }
-        //
+        public string GetName()
+        {
+            return _name;
+        }
+
         // public int GetId()
         // {
         //     return _id;
