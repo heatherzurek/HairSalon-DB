@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Hair Salon</title>
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='~/css/styles.css' type="text/css">
+</head>
+<body>
+  <div class="container">
+      <h1>Hair Salon</h1>
+      <h2>View Clients Here</h2>
+    <ol>
+    @if (Model.Count == 0)
+    {
+      <p>No clients have been added yet!</p>
+    }
+    @if(Model.Count != 0)
+    {
+      @foreach (var client in @Model["clients"])
+      {
+        <li><a href="/categories/@Model["stylist"].GetId()/clients/@client.GetId()">@client.GetName()</a></li>
+      }
+    }
+    </ol>
+    <a href="/stylists/@Model["stylist"].GetId()/clients/new">Add a new client</a><br><br>
+    <a href="/stylists">Return to stylist list</a>
+    <a href="/">Return to homepage</a>
+  </div>
+</body>
+</html>

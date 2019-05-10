@@ -31,23 +31,23 @@ namespace HairSalon.Controllers
             return View("Index", allStylists);
         }
 
-        // [HttpGet("/categories/{id}")]
-        // public ActionResult Show(int id)
-        // {
-        //     Dictionary<string, object> model = new Dictionary<string, object>();
-        //     Stylist selectedCategory = Category.Find(id);
-        //     List<Item> categoryItems = selectedCategory.GetItems();
-        //     model.Add("category", selectedCategory);
-        //     model.Add("items", categoryItems);
-        //     return View(model);
-        // }
+        [HttpGet("/stylists/{id}")]
+        public ActionResult Show(int id)
+        {
+            Dictionary<string, object> model = new Dictionary<string, object>();
+            Stylist selectedStylist = Stylist.Find(id);
+            List<Client> stylistClients = selectedStylist.GetClients();
+            model.Add("stylist", selectedStylist);
+            model.Add("clients", stylistClients);
+            return View(model);
+        }
         //
-        // [HttpPost("/categories/{categoryId}/items")]
+        // [HttpPost("/categories/{stylistId}/items")]
         // public ActionResult Create(int categoryId, string itemDescription, DateTime itemDueDate)
         // {
         //     Dictionary<string, object> model = new Dictionary<string, object>();
-        //     Category foundCategory = Category.Find(categoryId);
-        //     Item newItem = new Item(itemDescription, itemDueDate, categoryId);
+        //     Stylist foundStylist = Category.Find(categoryId);
+        //     Client newItem = new Item(itemDescription, itemDueDate, categoryId);
         //     newItem.Save();
         //     List<Item> categoryItems = foundCategory.GetItems();
         //     model.Add("items", categoryItems);
