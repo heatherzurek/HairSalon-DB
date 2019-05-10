@@ -7,12 +7,12 @@ namespace HairSalon.Controllers
 {
   public class ClientsController : Controller
   {
-    [HttpGet("/clients")]
-    public ActionResult Index()
-    {
-        List<Client> allClients = Clients.GetAll();
-        return View(allClients);
-    }
+    // [HttpGet("/stylists/{stylistId}/clients/new")]
+    // public ActionResult New(int stylistId)
+    // {
+    //     Stylist stylist = Stylist.Find(stylistId);
+    //     return View(stylist);
+    // }
 
   }
 }
