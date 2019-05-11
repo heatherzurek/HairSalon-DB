@@ -49,17 +49,6 @@ namespace HairSalon.Controllers
     //     return View(model);
     // }
     //
-    // [HttpPost("/stylists/{stylistId}/clients/{itemId}")]
-    // public ActionResult Update(int stylistId, int itemId, string newDescription)
-    // {
-    //     Item item = Item.Find(itemId);
-    //     item.Edit(newDescription);
-    //     Dictionary<string, object> model = new Dictionary<string, object>();
-    //     Stylist stylist = Stylist.Find(stylistId);
-    //     model.Add("stylist", stylist);
-    //     model.Add("item", item);
-    //     return View("Show", model);
-    // }
 
   }
 }
