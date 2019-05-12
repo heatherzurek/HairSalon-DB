@@ -24,6 +24,8 @@ namespace HairSalon.Controllers
         model.Add("stylist", stylist);
         return View(model);
     }
+
+    
     //
     // [HttpPost("/stylists/{stylistId}/clients/{clientId}/delete")]
     // public ActionResult DeleteClient(int stylistId, int clientId)
