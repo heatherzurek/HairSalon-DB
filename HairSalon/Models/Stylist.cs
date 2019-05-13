@@ -111,7 +111,7 @@ namespace HairSalon.Models
             {
             int StylistId = rdr.GetInt32(1);
             string StylistName = rdr.GetString(0);
-            Stylist newStylist = new Stylist(StylistName);
+            Stylist newStylist = new Stylist(StylistName, StylistId);
             allStylists.Add(newStylist);
             }
             conn.Close();
@@ -137,7 +137,7 @@ namespace HairSalon.Models
             string StylistName = "";
             while(rdr.Read())
             {
-              StylistId = rdr.GetInt32(2);
+              StylistId = rdr.GetInt32(1);
               StylistName = rdr.GetString(0);
             }
             Stylist newStylist = new Stylist(StylistName, StylistId);
