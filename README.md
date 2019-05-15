@@ -13,7 +13,7 @@
 | View list of Stylists | Select stylist name from list to view | "Dwight" |
 | View list of that Stylists clients | Select clients name from stylist list to view | "Jim" |
 
-## Setup/Installation Requirements
+## Setup with importing SQL files
 
 * _Clone this repo to your home machine_
 * _Start MAMP_
@@ -29,6 +29,8 @@
 
 ## Setup Database Instructions
 
+* _Open terminal_
+* _Run mysql -uroot -proot_
 * _CREATE DATABASE 'heather_zurek'_
 * _CREATE TABLE `stylists`_
 * _(`name` varchar(255),`id` int(11))_
