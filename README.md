@@ -27,6 +27,14 @@
 *_enter $ dotnet run_
 *_Open browser to localhost:5000 to use the app_
 
+## Setup Database Instructions
+
+*_CREATE DATABASE 'heather_zurek'_
+*_CREATE TABLE `stylists`_
+*_(`name` varchar(255),`id` int(11))_
+*_CREATE TABLE `clients`_
+*_(`name` varchar(255), `id` int(11),`stylist_id` int(11))_
+
 
 ## Known Bugs
 
