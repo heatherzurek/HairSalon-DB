@@ -15,30 +15,30 @@
 
 ## Setup/Installation Requirements
 
-*_Clone this repo to your home machine_
-*_Start MAMP_
-*_Start Servers_
-*_Click Open WebStart page_
-*_On the webpage that opens, click Tools and choose PHPMYADMIN_
-*_Create new database named heather_zurek_
-*_Select the Import tab_
-*_Select the heather_zurek.sql file and click Go
-*_Navigate the terminal to the HairSalon directory_
-*_enter $ dotnet run_
-*_Open browser to localhost:5000 to use the app_
+* _Clone this repo to your home machine_
+* _Start MAMP_
+* _Start Servers_
+* _Click Open WebStart page_
+* _On the webpage that opens, click Tools and choose PHPMYADMIN_
+* _Create new database named heather_zurek_
+* _Select the Import tab_
+* _Select the heather_zurek.sql file and click Go_
+* _Navigate the terminal to the HairSalon directory_
+* _enter $ dotnet run_
+* _Open browser to localhost:5000 to use the app_
 
 ## Setup Database Instructions
 
-*_CREATE DATABASE 'heather_zurek'_
-*_CREATE TABLE `stylists`_
-*_(`name` varchar(255),`id` int(11))_
-*_CREATE TABLE `clients`_
-*_(`name` varchar(255), `id` int(11),`stylist_id` int(11))_
+* _CREATE DATABASE 'heather_zurek'_
+* _CREATE TABLE `stylists`_
+* _(`name` varchar(255),`id` int(11))_
+* _CREATE TABLE `clients`_
+* _(`name` varchar(255), `id` int(11),`stylist_id` int(11))_
 
 
 ## Known Bugs
 
-_some.._
+_No Known Bugs🐛🐞_
 
 ## Support and contact details
 
