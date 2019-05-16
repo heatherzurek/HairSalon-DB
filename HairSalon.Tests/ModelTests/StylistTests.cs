@@ -82,56 +82,88 @@ namespace HairSalon.Tests
       CollectionAssert.AreEqual(newList, result);
     }
 
+    [TestMethod]
+    public void Find_ReturnsStylistInDatabase_Stylist()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist("George Orwell");
+      testStylist.Save();
 
+      //Act
+      Stylist foundStylist = Stylist.Find(testStylist.GetId());
 
-    // [TestMethod]
-    // public void Find_ReturnsCorrectStylist_Category()
-    // {
-    //   //Arrange
-    //   string name01 = "Work";
-    //   string name02 = "School";
-    //   Category newCategory1 = new Category(name01);
-    //   Category newCategory2 = new Category(name02);
-    //
-    //   //Act
-    //   Category result = Category.Find(2);
-    //
-    //   //Assert
-    //   Assert.AreEqual(newCategory2, result);
-    // }
-    //
-    // [TestMethod]
-    // public void GetStylists_ReturnsEmptyStylistList_ItemList()
-    // {
-    //   //Arrange
-    //   string name = "Work";
-    //   Category newCategory = new Category(name);
-    //   List<Item> newList = new List<Item> { };
-    //
-    //   //Act
-    //   List<Item> result = newCategory.GetItems();
-    //
-    //   //Assert
-    //   CollectionAssert.AreEqual(newList, result);
-    // }
-    //
-    // [TestMethod]
-    // public void AddItem_AssociatesItemWithCategory_ItemList()
-    // {
-    //   //Arrange
-    //   string description = "Walk the dog.";
-    //   Item newItem = new Item(description);
-    //   List<Item> newList = new List<Item> { newItem };
-    //   string name = "Work";
-    //   Category newCategory = new Category(name);
-    //   newCategory.AddItem(newItem);
-    //
-    //   //Act
-    //   List<Item> result = newCategory.GetItems();
-    //
-    //   //Assert
-    //   CollectionAssert.AreEqual(newList, result);
-    // }
+      //Assert
+      Assert.AreEqual(testStylist, foundStylist);
+    }
+
+    [TestMethod]
+    public void GetClients_ReturnsEmptyClientList_ClientList()
+    {
+      //Arrange
+      // string title = "1984";
+      Stylist newStylist = new Stylist("George Orwell");
+      List<Client> newList = new List<Client> { };
+
+      //Act
+      List<Client> result = newStylist.GetClients();
+
+      //Assert
+      CollectionAssert.AreEqual(newList, result);
+    }
+
+    [TestMethod]
+    public void GetAll_StylistsEmptyAtFirst_List()
+    {
+      //Arrange, Act
+      int result = Stylist.GetAll().Count;
+
+      //Assert
+      Assert.AreEqual(0, result);
+    }
+
+    [TestMethod]
+    public void Equals_ReturnsTrueIfNamesAreTheSame_Stylist()
+    {
+      //Arrange, Act
+      Stylist firstStylist = new Stylist("George Orwell");
+      Stylist secondStylist = new Stylist("George Orwell");
+
+      //Assert
+      Assert.AreEqual(firstStylist, secondStylist);
+    }
+
+    [TestMethod]
+    public void Save_SavesStylistToDatabase_StylistList()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist("George Orwell");
+      testStylist.Save();
+
+      //Act
+      List<Stylist> result = Stylist.GetAll();
+      List<Stylist> testList = new List<Stylist>{testStylist};
+
+      //Assert
+      CollectionAssert.AreEqual(testList, result);
+    }
+
+    [TestMethod]
+    public void Save_DatabaseAssignsIdToStylist_Id()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist("Sylvia Plath");
+      testStylist.Save();
+
+      //Act
+      Stylist savedStylist = Stylist.GetAll()[0];
+
+      int result = savedStylist.GetId();
+      int testId = testStylist.GetId();
+
+      //Assert
+      Assert.AreEqual(testId, result);
+    }
+
 
   }
 }
