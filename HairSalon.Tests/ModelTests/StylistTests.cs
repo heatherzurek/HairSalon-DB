@@ -6,13 +6,14 @@ using System;
 namespace HairSalon.Tests
 {
   [TestClass]
-  public class StylistTest
+  public class StylistTest : IDisposable
   {
-    //
-    // public void Dispose()
-    // {
-    //   Stylist.ClearAll();
-    // }
+
+    public void Dispose()
+    {
+      Stylist.DeleteAll();
+      Client.ClearAll();
+    }
 
     [TestMethod]
     public void StylistConstructor_CreatesInstanceOfStylist_Stylist()
@@ -63,22 +64,25 @@ namespace HairSalon.Tests
       //Assert
       CollectionAssert.AreEqual(testList, result);
     }
-    // [TestMethod]
-    // public void GetAll_ReturnsAllStylistObjects_StylistList()
-    // {
-    //   //Arrange
-    //   string name01 = "Dwight";
-    //   string name02 = "Angela";
-    //   Stylist newStylist1 = new Stylist(name01);
-    //   Stylist newStylist2 = new Stylist(name02);
-    //   List<Stylist> newList = new List<Stylist> { newStylist1, newStylist2 };
-    //
-    //   //Act
-    //   List<Stylist> result = Stylist.GetAll();
-    //
-    //   //Assert
-    //   CollectionAssert.AreEqual(newList, result);
-    // }
+
+    [TestMethod]
+    public void GetAll_ReturnsAllStylistObjects_StylistList()
+    {
+      //Arrange
+      Stylist newStylist1 = new Stylist("George Orwell");
+      newStylist1.Save();
+      Stylist newStylist2 = new Stylist("Sylvia Plath");
+      newStylist2.Save();
+      List<Stylist> newList = new List<Stylist> { newStylist1, newStylist2 };
+
+      //Act
+      List<Stylist> result = Stylist.GetAll();
+
+      //Assert
+      CollectionAssert.AreEqual(newList, result);
+    }
+
+
 
     // [TestMethod]
     // public void Find_ReturnsCorrectStylist_Category()

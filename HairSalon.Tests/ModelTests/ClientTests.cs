@@ -7,12 +7,13 @@ namespace HairSalon.Tests
 {
 
   [TestClass]
-  public class ClientTest
+  public class ClientTest : IDisposable
   {
 
     public void Dispose()
     {
       Client.ClearAll();
+      Stylist.DeleteAll();
     }
 
     public ClientTest()
