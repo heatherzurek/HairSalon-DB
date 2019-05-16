@@ -7,13 +7,15 @@
   <link rel='stylesheet' href='~/css/styles.css' type="text/css">
 </head>
 <body>
-  <div class="container">
-      <h1>Hair Salon</h1>
-      <h2>Pick a stylist to add a client</h2>
+  <div class="jumbotron">
+      <h1>Cut n' Paste Salon</h1>
+    </div>
+      <div class="container">
+      <h2>Select Stylist</h2>
       <ul>
         @if (Model.Count == 0)
         {
-          <p>No stylists have been added yet!</p>
+          <li>No stylists have been added yet!</li>
         }
 
         @if(Model.Count != 0)
