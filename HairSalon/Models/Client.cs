@@ -70,81 +70,81 @@ namespace HairSalon.Models
     }
 
     public static List<Client> GetAll()
-{
-    List<Client> allClients = new List<Client> {};
-    MySqlConnection conn = DB.Connection();
-    conn.Open();
-    var cmd = conn.CreateCommand() as MySqlCommand;
-    cmd.CommandText = @"SELECT * FROM clients;";
-    var rdr = cmd.ExecuteReader() as MySqlDataReader;
-    while(rdr.Read())
     {
+      List<Client> allClients = new List<Client> {};
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM clients;";
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+      while(rdr.Read())
+      {
         string clientName = rdr.GetString(0);
         int clientId = rdr.GetInt32(1);
         int clientStylistId = rdr.GetInt32(2);
         Client newClient = new Client(clientName, clientStylistId, clientId);
         allClients.Add(newClient);
-    }
-    conn.Close();
-    if (conn != null)
-    {
+      }
+      conn.Close();
+      if (conn != null)
+      {
         conn.Dispose();
+      }
+      return allClients;
     }
-    return allClients;
-}
 
-public void Save()
-{
-    MySqlConnection conn = DB.Connection();
-    conn.Open();
-    var cmd = conn.CreateCommand() as MySqlCommand;
-    cmd.CommandText = @"INSERT INTO clients (name, stylist_id) VALUES (@name, @stylistId);";
-    MySqlParameter name = new MySqlParameter();
-    name.ParameterName = "@name";
-    name.Value = this._name;
-    cmd.Parameters.Add(name);
-
-    MySqlParameter stylistId = new MySqlParameter();
-    stylistId.ParameterName = "@stylistId";
-    stylistId.Value = this._stylistId;
-    cmd.Parameters.Add(stylistId);
-    cmd.ExecuteNonQuery();
-    _id = (int) cmd.LastInsertedId;
-    conn.Close();
-    if (conn != null)
+    public void Save()
     {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO clients (name, stylist_id) VALUES (@name, @stylistId);";
+      MySqlParameter name = new MySqlParameter();
+      name.ParameterName = "@name";
+      name.Value = this._name;
+      cmd.Parameters.Add(name);
+
+      MySqlParameter stylistId = new MySqlParameter();
+      stylistId.ParameterName = "@stylistId";
+      stylistId.Value = this._stylistId;
+      cmd.Parameters.Add(stylistId);
+      cmd.ExecuteNonQuery();
+      _id = (int) cmd.LastInsertedId;
+      conn.Close();
+      if (conn != null)
+      {
         conn.Dispose();
+      }
     }
-}
 
-public static Client Find(int id)
-{
-    MySqlConnection conn = DB.Connection();
-    conn.Open();
-    var cmd = conn.CreateCommand() as MySqlCommand;
-    cmd.CommandText = @"SELECT * FROM clients WHERE id = (@searchId);";
-    MySqlParameter searchId = new MySqlParameter();
-    searchId.ParameterName = "@searchId";
-    searchId.Value = id;
-    cmd.Parameters.Add(searchId);
-    var rdr = cmd.ExecuteReader() as MySqlDataReader;
-    int clientId = 0;
-    string clientName = "";
-    int clientStylistId = 0;
-    while(rdr.Read())
+    public static Client Find(int id)
     {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM clients WHERE id = (@searchId);";
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@searchId";
+      searchId.Value = id;
+      cmd.Parameters.Add(searchId);
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+      int clientId = 0;
+      string clientName = "";
+      int clientStylistId = 0;
+      while(rdr.Read())
+      {
         clientName = rdr.GetString(0);
         clientId = rdr.GetInt32(1);
         clientStylistId = rdr.GetInt32(2);
-    }
-    Client foundClient = new Client(clientName, clientStylistId, clientId);
-    conn.Close();
-    if (conn != null)
-    {
+      }
+      Client foundClient = new Client(clientName, clientStylistId, clientId);
+      conn.Close();
+      if (conn != null)
+      {
         conn.Dispose();
+      }
+      return foundClient;
     }
-    return foundClient;
-}
 
   }
 }
