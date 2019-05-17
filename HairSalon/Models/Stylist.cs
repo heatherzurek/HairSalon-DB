@@ -202,6 +202,63 @@ namespace HairSalon.Models
         }
     }
 
+    public void AddSpecialty(Specialty newSpecialty)
+  {
+    MySqlConnection conn = DB.Connection();
+    conn.Open();
+    var cmd = conn.CreateCommand() as MySqlCommand;
+    cmd.CommandText = @"INSERT INTO salon (stylist_id, specialtys_id) VALUES (@StylistId, @SpecialtyId);";
+    MySqlParameter stylist_id = new MySqlParameter();
+    stylist_id.ParameterName = "@StylistId";
+    stylist_id.Value = GetId();
+    cmd.Parameters.Add(stylist_id);
+    MySqlParameter specialtys_id = new MySqlParameter();
+    specialtys_id.ParameterName = "@SpecialtyId";
+    specialtys_id.Value = newSpecialty.GetId();
+    cmd.Parameters.Add(specialtys_id);
+    cmd.ExecuteNonQuery();
+    conn.Close();
+    if (conn != null)
+    {
+      conn.Dispose();
+    }
+  }
+
+  public List<Specialty> GetSpecialtys()
+  {
+    MySqlConnection conn = DB.Connection();
+    conn.Open();
+    MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+    cmd.CommandText = @"SELECT specialtys.* FROM stylists
+    JOIN salon ON (stylists.id = salon.stylist_id)
+    JOIN specialtys ON (salon.specialty_id = specialtys.id)
+    WHERE stylists.id = @StylistId;";
+    MySqlParameter stylistIdParameter = new MySqlParameter();
+    stylistIdParameter.ParameterName = "@StylistId";
+    stylistIdParameter.Value = GetId();
+    cmd.Parameters.Add(stylistIdParameter);
+    MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+    List<Specialty> specialtys = new List<Specialty>{};
+    while(rdr.Read())
+    {
+      int specialtyId = rdr.GetInt32(0);
+      string specialtyName = rdr.GetString(1);
+      Specialty newSpecialty = new Specialty(specialtyName, specialtyId);
+      specialtys.Add(newSpecialty);
+    }
+    conn.Close();
+    if (conn != null)
+    {
+      conn.Dispose();
+    }
+    return specialtys;
+  }
+
+
+
+
+
+
     }
 
 }
