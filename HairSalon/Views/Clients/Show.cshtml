@@ -17,6 +17,10 @@
       <a href="/stylists/@Model["stylist"].GetId()/clients/new">Add New Client</a>
       <a href="/stylists">View All Stylists</a>
       <a href="/homepage">Homepage</a>
+
+      <form action='/clients/@Model["client"].GetId()/delete' method="post">
+        <button type="submit" class="btn btn-dark">Delete Client</button>
+      </form>
   </div>
 </body>
 </html>
