@@ -57,3 +57,6 @@
 /Users/heatherzurek/Desktop/HairSalon-DB/HairSalon/obj/Debug/netcoreapp2.2/HairSalon.pdb
 /Users/heatherzurek/Desktop/HairSalon-DB/HairSalon/obj/Debug/netcoreapp2.2/HairSalon.csproj.CopyComplete
 /Users/heatherzurek/Desktop/HairSalon-DB/HairSalon/obj/Debug/netcoreapp2.2/Razor/Views/Stylist/Edit.g.cshtml.cs
+/Users/heatherzurek/Desktop/HairSalon-DB/HairSalon/obj/Debug/netcoreapp2.2/Razor/Views/Specialty/Index.g.cshtml.cs
+/Users/heatherzurek/Desktop/HairSalon-DB/HairSalon/obj/Debug/netcoreapp2.2/Razor/Views/Specialty/New.g.cshtml.cs
+/Users/heatherzurek/Desktop/HairSalon-DB/HairSalon/obj/Debug/netcoreapp2.2/Razor/Views/Specialty/Show.g.cshtml.cs
