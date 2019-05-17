@@ -147,7 +147,7 @@ namespace HairSalon.Tests
       //Assert
       CollectionAssert.AreEqual(newList, result);
     }
-    
+
     [TestMethod]
     public void Save_SavesStylistToDatabase_StylistList()
     {
@@ -179,6 +179,7 @@ namespace HairSalon.Tests
       //Assert
       Assert.AreEqual(testId, result);
     }
+
 
 
 

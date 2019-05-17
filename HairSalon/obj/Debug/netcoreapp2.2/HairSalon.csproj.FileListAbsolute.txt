@@ -56,3 +56,4 @@
 /Users/heatherzurek/Desktop/HairSalon-DB/HairSalon/obj/Debug/netcoreapp2.2/HairSalon.dll
 /Users/heatherzurek/Desktop/HairSalon-DB/HairSalon/obj/Debug/netcoreapp2.2/HairSalon.pdb
 /Users/heatherzurek/Desktop/HairSalon-DB/HairSalon/obj/Debug/netcoreapp2.2/HairSalon.csproj.CopyComplete
+/Users/heatherzurek/Desktop/HairSalon-DB/HairSalon/obj/Debug/netcoreapp2.2/Razor/Views/Stylist/Edit.g.cshtml.cs
