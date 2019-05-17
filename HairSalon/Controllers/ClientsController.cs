@@ -26,10 +26,10 @@ namespace HairSalon.Controllers
     }
 
     [HttpPost("/clients/{clientId}/delete")]
-    public ActionResult Delete(int clientId)
+    public ActionResult DeleteClient(int clientId)
     {
       Client Client = Client.Find(clientId);
-      Client.Delete();
+      Client.DeleteClient();
       List<Client> allClients = Client.GetAll();
       return RedirectToAction("Index", allClients);
     }

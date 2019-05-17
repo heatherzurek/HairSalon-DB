@@ -117,6 +117,22 @@ namespace HairSalon.Tests
     }
 
     [TestMethod]
+    public void DeleteClient_DeletesClientFromDatabase_List()
+    {
+      //Arrange
+      Client firstClient = new Client("Leslie", 1);
+      firstClient.Save();
+      Client secondClient = new Client("Ron", 1);
+      secondClient.Save();
+      //Act
+      firstClient.DeleteClient();
+      List<Client> result = Client.GetAll();
+      List<Client> newList = new List<Client> { secondClient };
+      //Assert
+      CollectionAssert.AreEqual(newList, result);
+    }
+
+    [TestMethod]
     public void Save_SavesToDatabase_ClientList()
     {
       //Arrange
@@ -147,6 +163,7 @@ namespace HairSalon.Tests
       //Assert
       Assert.AreEqual(testId, result);
     }
+
 
 
 

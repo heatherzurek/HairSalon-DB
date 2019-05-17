@@ -146,7 +146,7 @@ namespace HairSalon.Models
       return foundClient;
     }
 
-    public void Delete()
+    public void DeleteClient()
    {
      MySqlConnection conn = DB.Connection();
      conn.Open();
