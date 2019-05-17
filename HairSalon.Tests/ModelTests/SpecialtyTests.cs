@@ -14,6 +14,8 @@ namespace HairSalon.Tests
     {
 
       Specialty.DeleteAll();
+      Stylist.DeleteAll();
+      Client.ClearAll();
     }
 
     public SpecialtyTest()
@@ -83,25 +85,45 @@ namespace HairSalon.Tests
       Assert.AreEqual(testSpecialty, foundSpecialty);
     }
 
+    // [TestMethod]
+    // public void Test_AddStylist_AddsStylistToSpecialty()
+    // {
+    //   //Arrange
+    //   Specialty testSpecialty = new Specialty("Color");
+    //   testSpecialty.Save();
+    //   Stylist testStylist = new Stylist("Dwight");
+    //   testStylist.Save();
+    //   Stylist testStylist2 = new Stylist("Jim");
+    //   testStylist2.Save();
+    //
+    //   //Act
+    //   testSpecialty.AddStylist(testStylist);
+    //   testSpecialty.AddStylist(testStylist2);
+    //   List<Stylist> result = testSpecialty.GetStylists();
+    //   List<Stylist> testList = new List<Stylist>{testStylist, testStylist2};
+    //
+    //   //Assert
+    //   CollectionAssert.AreEqual(testList, result);
+    // }
+
     [TestMethod]
-    public void Test_AddStylist_AddsStylistToSpecialty()
+    public void GetStylists_ReturnsAllSpecialtyStylists_StylistList()
     {
       //Arrange
-      Specialty testSpecialty = new Specialty("Color");
+      Specialty testSpecialty = new Specialty("color");
       testSpecialty.Save();
-      Stylist testStylist = new Stylist("Dwight");
-      testStylist.Save();
-      Stylist testStylist2 = new Stylist("Jim");
+      Stylist testStylist1 = new Stylist("Jim", 1);
+      testStylist1.Save();
+      Stylist testStylist2 = new Stylist("Dwight", 2);
       testStylist2.Save();
 
       //Act
-      testSpecialty.AddStylist(testStylist);
-      testSpecialty.AddStylist(testStylist2);
-      List<Stylist> result = testSpecialty.GetStylists();
-      List<Stylist> testList = new List<Stylist>{testStylist, testStylist2};
+      testSpecialty.AddStylist(testStylist1);
+      List<Stylist> savedStylists = testSpecialty.GetStylists();
+      List<Stylist> testList = new List<Stylist> {testStylist1};
 
       //Assert
-      CollectionAssert.AreEqual(testList, result);
+      CollectionAssert.AreEqual(testList, savedStylists);
     }
 
 

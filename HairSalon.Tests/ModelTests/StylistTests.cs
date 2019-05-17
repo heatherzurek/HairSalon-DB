@@ -13,6 +13,7 @@ namespace HairSalon.Tests
     {
       Stylist.DeleteAll();
       Client.ClearAll();
+      Specialty.DeleteAll();
     }
 
     [TestMethod]
@@ -21,7 +22,7 @@ namespace HairSalon.Tests
       Stylist newStylist = new Stylist("test stylist");
       Assert.AreEqual(typeof(Stylist), newStylist.GetType());
     }
-    
+
     [TestMethod]
     public void GetName_ReturnsName_String()
     {
