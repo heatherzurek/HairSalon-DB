@@ -9,17 +9,20 @@
 <body>
   <div class="container">
     <h1>Client information</h1>
+    <center><a href="/">Home</a> <a href="/stylists">View All Stylists</a> <a href="/stylists/@Model["stylist"].GetId()/clients/new">Add New Client</a></center>
+    <hr>
     <h3>Name @Model["client"].GetName()</h3>
-      // <a href='/stylists/@Model["stylist"].GetId()/clients/@Model["client"].GetId()/edit'>Edit this item</a>
-      // <form action="/stylists/@Model["stylist"].GetId()/clients/@Model["client"].GetId()/delete" method="post">
-      //   <button type="submit">Delete this item</button>
-      </form>
-      <a href="/stylists/@Model["stylist"].GetId()/clients/new">Add New Client</a>
-      <a href="/stylists">View All Stylists</a>
-      <a href="/homepage">Homepage</a>
+    
+      <a href='/stylists/@Model["stylist"].GetId()/clients/@Model["client"].GetId()/edit'>Edit this item</a>
+      <!-- <form action="/stylists/@Model["stylist"].GetId()/clients/@Model["client"].GetId()/delete" method="post">
+      <button type="submit">Delete this item</button>
+      </form> -->
+      <!-- <a href="/stylists/@Model["stylist"].GetId()/clients/new">Add New Client</a> -->
+      <!-- <a href="/stylists">View All Stylists</a>
+      <a href="/">Homepage</a> -->
 
       <form action='/clients/@Model["client"].GetId()/delete' method="post">
-        <button type="submit" class="btn btn-dark">Delete Client</button>
+      <button type="submit" class="btn btn-dark">Delete Client</button>
       </form>
   </div>
 </body>
