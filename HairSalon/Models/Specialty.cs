@@ -8,19 +8,26 @@ namespace HairSalon.Models
   public class Specialty
   {
 
-    private string _type;
+    private string _specialtyType;
     private int _id;
 
-    public Specialty(string type, int id = 0)
+    public Specialty(string specialtyType, int id = 0)
     {
-      _type = type;
+      _specialtyType = specialtyType;
       _id = id;
     }
 
     public string GetSpecialtyType()
     {
-        return _type;
+        return _specialtyType;
     }
+
+    public int GetId()
+    {
+        return _id;
+    }
+
+
 
 
 
