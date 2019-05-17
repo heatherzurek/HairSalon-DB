@@ -8,13 +8,16 @@
 </head>
 <body>
   <div class="container">
-    <h1>Hair Salon</h1>
+    <h1>Clients</h1>
+    <hr>
     <h2>You can add a new client to the <strong>@Model.GetName()</strong> stylist here.</h2>
       <form action='/stylists/@Model.GetId()/clients' method='post'>
         <input id='stylistId' name='stylistId' type='hidden' value='@Model.GetId()'>
         <label for='clientName'>Name:</label>
         <input id='clientName' name='clientName' type='text' required>
         <button type='submit'>Add client</button>
+        <a href="/homepage">Homepage</a>
+
       </form>
     </div>
 </body>

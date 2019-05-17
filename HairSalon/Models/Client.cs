@@ -147,20 +147,51 @@ namespace HairSalon.Models
     }
 
     public void DeleteClient()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = new MySqlCommand("DELETE FROM clients WHERE id = @ClientId;", conn);
+      MySqlParameter clientIdParameter = new MySqlParameter();
+      clientIdParameter.ParameterName = "@ClientId";
+      clientIdParameter.Value = this.GetId();
+      cmd.Parameters.Add(clientIdParameter);
+      cmd.ExecuteNonQuery();
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
+
+   public List<Client> GetClients()
    {
+     List<Client> allStylistClients = new List<Client> {};
      MySqlConnection conn = DB.Connection();
      conn.Open();
-     MySqlCommand cmd = new MySqlCommand ("DELETE FROM clients WHERE id = @ClientId;", conn);
-     MySqlParameter clientIdParameter = new MySqlParameter();
-     clientIdParameter.ParameterName = "@ClientId";
-     clientIdParameter.Value = this.GetId();
-     cmd.Parameters.Add(clientIdParameter);
-     cmd.ExecuteNonQuery();
+     var cmd = conn.CreateCommand() as MySqlCommand;
+     cmd.CommandText = @"SELECT * FROM clients WHERE stylist_id = @stylist_id;";
+     MySqlParameter stylistId = new MySqlParameter();
+     stylistId.ParameterName = "@stylist_id";
+     stylistId.Value = this._id;
+     cmd.Parameters.Add(stylistId);
+     var rdr = cmd.ExecuteReader() as MySqlDataReader;
+     while(rdr.Read())
+     {
+         int clientId = rdr.GetInt32(1);
+         string clientName = rdr.GetString(0);
+         int clientStylistId = rdr.GetInt32(2);
+         Client newClient = new Client(clientName, clientStylistId, clientId);
+         allStylistClients.Add(newClient);
+     }
+     conn.Close();
      if (conn != null)
      {
-       conn.Close();
+         conn.Dispose();
      }
+     return allStylistClients;
    }
+
+
+
 
   }
 }
