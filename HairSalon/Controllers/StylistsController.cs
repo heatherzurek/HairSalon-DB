@@ -64,14 +64,14 @@ namespace HairSalon.Controllers
           return RedirectToAction("Index", allStylists);
         }
 
-        [HttpGet("/stylists/{stylistId}/edit")]
-        public ActionResult Edit(int stylistId)
-        {
-          // Dictionary<string, object> model = new Dictionary<string, object>();
-          Stylist stylist = Stylist.Find(stylistId);
-          stylist.Add("stylist", stylist);
-          return View(stylist);
-        }
+        // [HttpGet("/stylists/{stylistId}/edit")]
+        // public ActionResult Edit(int stylistId)
+        // {
+        //   Dictionary<string, object> model = new Dictionary<string, object>();
+        //   Stylist stylist = Stylist.Find(stylistId);
+        //   stylist.Add("stylist", stylist);
+        //   return View(stylist);
+        // }
 
     }
 }

@@ -12,7 +12,7 @@
     <center><a href="/">Home</a> <a href="/stylists">View All Stylists</a> <a href="/stylists/@Model["stylist"].GetId()/clients/new">Add New Client</a></center>
     <hr>
     <h3>Name @Model["client"].GetName()</h3>
-    
+
       <a href='/stylists/@Model["stylist"].GetId()/clients/@Model["client"].GetId()/edit'>Edit this item</a>
       <!-- <form action="/stylists/@Model["stylist"].GetId()/clients/@Model["client"].GetId()/delete" method="post">
       <button type="submit">Delete this item</button>
@@ -22,7 +22,8 @@
       <a href="/">Homepage</a> -->
 
       <form action='/clients/@Model["client"].GetId()/delete' method="post">
-      <button type="submit" class="btn btn-dark">Delete Client</button>
+        <button type="submit" class="btn btn-dark">Delete Client</button>
+      </form>
       </form>
   </div>
 </body>

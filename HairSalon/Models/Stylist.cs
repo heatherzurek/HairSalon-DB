@@ -255,11 +255,5 @@ namespace HairSalon.Models
       return specialtys;
     }
 
-
-
-
-
-
   }
-
 }

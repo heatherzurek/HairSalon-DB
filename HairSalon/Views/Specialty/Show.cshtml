@@ -2,42 +2,39 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>Hair Salon</title>
   <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
   <link rel='stylesheet' href='~/css/styles.css' type="text/css">
 </head>
 <body>
   <div class="container">
 
-
-    <h2>@Model["specialty"].GetType()</h2>
+    <h1>Specialty: @Model["selectedSpecialty"].GetType()</h1>
     <hr />
 
     @if (@Model["specialtyStylists"].Count != 0)
     {
-      <h4>Here are the stylists available by this specialty:</h4>
+      <h4>This specialty has this stylist:</h4>
       <ul>
       @foreach (var stylist in @Model["specialtyStylists"])
       {
         <li>@stylist.GetName()</li>
+        @Model["specialtyStylists"]
       }
       </ul>
     }
 
-    <h4>Add a stylist to this specialty:</h4>
 
-    <form action='/specialties/@Model["specialty"].GetId()/stylists/new' method='post'>
-      <label for='stylistId'>Select a stylist</label>
-      <select id='stylistId' name='stylistId' type='text'>
-
-        @foreach (var stylist in @Model["allStylists"])
-        {
-          <option value='@stylist.GetId()'>@stylist.GetName()</option>
-        }
-
-      </select>
-      <button type='submit' class="btn btn-dark">Add</button>
-    </form>
+    <form action='/specialties/@Model["selectedSpecialty"].GetId()/stylists/new' method='post'>
+  <label for='stylistId'>Select a stylist</label>
+  <select id='stylistId' name='stylistId' type='text'>
+    @foreach (var stylist in @Model["allStylists"])
+    {
+      <option value='@stylist.GetId()'>@stylist.GetName()</option>
+    }
+  </select>
+  <button type='submit' class="btn btn-dark">Add</button>
+</form>
 
     <p><a href="/">Return to Main Page</a></p>
 
