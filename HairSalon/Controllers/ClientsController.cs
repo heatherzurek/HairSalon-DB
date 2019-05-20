@@ -41,5 +41,12 @@ namespace HairSalon.Controllers
       List<Client> allClients = Client.GetAll();
       return RedirectToAction("Index", allClients);
     }
+
+    [HttpPost("/stylists/delete-all-clients")]
+    public ActionResult DeleteClients()
+    {
+        Client.ClearAll();
+        return RedirectToAction("Index");
+    }
   }
 }
