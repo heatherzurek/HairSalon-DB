@@ -1,19 +1,29 @@
-<!-- <h1>To Do List</h1>
-<hr>
+@using HairSalon.Models;
+@using System.Collections.Generic;
 
-<h2>Edit Name: @Model["stylist"].GetName()</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Edit stylist details</title>
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="~/css/styles.css">
+</head>
 
-<form action="/stylists/@Model["stylist"].GetId()" method="post">
-  <label for="newName">Name:</label>
-  <input type="text" name="newName" value="@Model["stylist"].GetName()">
-  <button type="submit">Edit</button>
-</form>
+<body>
+<div class="container">
 
-<h4><a href="/stylists/@Model["stylist"].GetId()">Return to previous page</a></h4> -->
+  <h1>Hair salon</h1>
 
+  <h2>Edit Stylist's Name: **@Model.GetName()**</h2>
 
-<form action="/stylists/@Model.GetId()/" method="post">
-  <label for="newName">Name:</label>
-  <input type="text" name="newName" value="@Model.Name">
-  <button type="submit" class="btn btn-secondary">Edit</button>
-</form>
+  <form action="/stylists/@Model.GetId()" method="post">
+    <label for="newName">Name:</label>
+    <input type="text" name="newName"><br>
+    <button type="submit" class="btn btn-warning">Edit</button>
+  </form>
+
+  <h4><a href="/stylists/@Model.GetId()/" class="btn btn-dark">Return to previous page</a></h4>
+</div>
+</body>
+</html>
