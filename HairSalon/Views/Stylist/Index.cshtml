@@ -9,7 +9,8 @@
 <body>
   <div class="container">
     <h1>Hair Salon</h1>
-    <center><a href="/">Home</a></center>
+    <center><a href="/">Home</a>|<a href="/stylists/new">Add New Stylist</a>
+</center>
     <hr>
     <h2>Select Stylist</h2>
     <ul>
@@ -27,10 +28,13 @@
         }
       }
     </ul>
+
+    <form action="/stylists/delete-all-stylists" method="post">
+      <button class="btn btn-danger" type="submit">Delete All Stylists</button>
+    </form>
+
   </div>
-  <!-- <form action="/stylists/delete" method="post">
-  <button class="btn btn-danger" type="submit">Delete all stylists</button>
-</form> -->
+
 
 </body>
 </html>
